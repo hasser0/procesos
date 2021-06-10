@@ -4,6 +4,7 @@ import argparse
 from exhaustive import exhaustive
 from lp import lp
 from improvement import improvement, improvementd
+from succesive import succesive
 
 np.set_printoptions(suppress=True)
 parser = argparse.ArgumentParser(description="Stochastic processes method's")
@@ -35,4 +36,4 @@ if __name__ == '__main__':
     if method == 'improvementd':
         print(improvementd(Pijk, Cik))
     if method == 'succesive':
-        pass
+        print(succesive(Pijk, Cik))
