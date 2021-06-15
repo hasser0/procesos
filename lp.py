@@ -12,6 +12,9 @@ def lp(Pijk, Cik):
     A = np.vstack((yik,yjk-pij_yik))
     b = np.zeros(m+1).reshape(-1,1)
     b[0,0] = 1
+    print(c)
+    print(A)
+    print(b)
     res = linprog(c=c, A_eq=A, b_eq=b, method='revised simplex')
     return res['x'], res['fun']
 
