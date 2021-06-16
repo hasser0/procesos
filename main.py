@@ -20,13 +20,11 @@ if __name__ == '__main__':
     m = args.states
     k = args.decisions
     method = args.method
-    pij = tuple(df.values[m*i:m*(i+1),0:] for i in range(k))
+    pij = tuple(df.values[m*i:m*(i+1),0:m] for i in range(k))
     Pijk = np.dstack(pij)
     Cik = df.values[m*k:, 0:k]
     if method == 'exhaustive':
-        best, z = exhaustive(Pijk, Cik)
-        print(best)
-        print(z)
+        exhaustive(Pijk, Cik)
     if method == 'linear':
         best, z = lp(Pijk, Cik)
         print(best.reshape(m,k))
