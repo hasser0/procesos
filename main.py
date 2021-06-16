@@ -12,6 +12,7 @@ parser.add_argument('-f', '--file', type=str, help='File')
 parser.add_argument('-M', '--states', type=int, help='Number of states')
 parser.add_argument('-K', '--decisions', type=int, help='Number of decisions')
 parser.add_argument('-m', '--method', type=str, help='Method to use')
+parser.add_argument('-n', '--iterations', type=int, help='Number of iterations in case of succesive')
 args = parser.parse_args()
 
 if __name__ == '__main__':
@@ -19,6 +20,7 @@ if __name__ == '__main__':
     df = pd.read_excel(file, header=None)
     m = args.states
     k = args.decisions
+    n = args.iterations
     method = args.method
     pij = tuple(df.values[m*i:m*(i+1),0:m] for i in range(k))
     Pijk = np.dstack(pij)
@@ -32,4 +34,4 @@ if __name__ == '__main__':
     if method == 'improvementd':
         improvementd(Pijk, Cik)
     if method == 'succesive':
-        succesive(Pijk, Cik)
+        succesive(Pijk, Cik, n=n)

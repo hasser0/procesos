@@ -1,11 +1,13 @@
 import numpy as np
 
-def succesive(Pijk, Cik, n=10, alpha=0.9):
+def succesive(Pijk, Cik, n=50, alpha=0.9):
     m, k = Cik.shape
-    iteration = 0
+    iteration = 1
     politic = np.nanargmin(Cik, axis=1)
+    print("-"*15+"Politica inicial"+"-"*15)
+    print(politic)
     V = np.nanmin(Cik, axis=1).reshape(-1,1)
-    while iteration < n:
+    while iteration < n+1:
         politic = []
         new_V = []
         for state in range(m):
@@ -14,5 +16,7 @@ def succesive(Pijk, Cik, n=10, alpha=0.9):
             politic.append(pol)
             new_V.append(Vj)
         V = np.array(new_V).reshape(-1,1)
+        print("-"*15+"Iteración "+str(iteration)+"-"*15)
+        print(str(politic))
         iteration+=1
     return politic
