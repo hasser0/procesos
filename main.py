@@ -26,12 +26,10 @@ if __name__ == '__main__':
     if method == 'exhaustive':
         exhaustive(Pijk, Cik)
     if method == 'linear':
-        best, z = lp(Pijk, Cik)
-        print(best.reshape(m,k))
-        print(z)
+        lp(Pijk, Cik)
     if method == 'improvement':
-        print(improvement(Pijk, Cik))
+        improvement(Pijk, Cik)
     if method == 'improvementd':
-        print(improvementd(Pijk, Cik))
+        improvementd(Pijk, Cik)
     if method == 'succesive':
-        print(succesive(Pijk, Cik))
+        succesive(Pijk, Cik)

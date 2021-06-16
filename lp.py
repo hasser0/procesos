@@ -12,9 +12,15 @@ def lp(Pijk, Cik):
     A = np.vstack((yik,yjk-pij_yik))
     b = np.zeros(m+1).reshape(-1,1)
     b[0,0] = 1
-    print(c)
-    print(A)
-    print(b)
+    print("Min z = c@y")
+    print("donde")
+    print("A@y<=b")
+    print("c = "+str(c))
+    print("A = "+str(A))
+    print("b = "+str(b))
     res = linprog(c=c, A_eq=A, b_eq=b, method='revised simplex')
+    print("-"*15+"Resultados"+"-"*15)
+    print("z = "+str(res['fun']))
+    print("yik = "+str(res['x']))
     return res['x'], res['fun']
 

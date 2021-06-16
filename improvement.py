@@ -17,6 +17,9 @@ def improvement(Pijk, Cik):
         break
     new_politic = np.array(R1)
     previous_politic = np.ones(m)*-1
+    print("-"*15+"Política inicial"+"-"*15)
+    print(str(new_politic))
+    iteration = 1
     while not (previous_politic==new_politic).all():
         previous_politic = new_politic
         C = np.array([Cik[i, kei] for i, kei in enumerate(previous_politic)]).reshape(-1, 1)
@@ -31,6 +34,9 @@ def improvement(Pijk, Cik):
             pol = np.nanargmin((Cik[state, :].reshape(-1, 1) + (Pijk[state, :, :].T @ vj) - vj[state]).flatten())
             new_politic.append(pol)
         new_politic = np.array(new_politic)
+        print("-"*15+"Iteración "+str(iteration)+"-"*15)
+        iteration += 1
+        print(str(new_politic))
     return new_politic
 
 def improvementd(Pijk, Cik, alpha=0.9):
@@ -48,6 +54,9 @@ def improvementd(Pijk, Cik, alpha=0.9):
         break
     new_politic = np.array(R1)
     previous_politic = np.ones(m) * -1
+    print("-" * 15 + "Política inicial" + "-" * 15)
+    print(str(new_politic))
+    iteration = 1
     while not (previous_politic == new_politic).all():
         previous_politic = new_politic
         C = np.array([Cik[i, kei] for i, kei in enumerate(previous_politic)]).reshape(-1, 1)
@@ -59,4 +68,7 @@ def improvementd(Pijk, Cik, alpha=0.9):
             pol = np.nanargmin((Cik[state, :].reshape(-1, 1) + alpha*(Pijk[state, :, :].T @ vj)).flatten())
             new_politic.append(pol)
         new_politic = np.array(new_politic)
+        print("-" * 15 + "Iteración " + str(iteration) + "-" * 15)
+        iteration += 1
+        print(str(new_politic))
     return new_politic
